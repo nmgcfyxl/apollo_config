@@ -157,7 +157,7 @@ class ApolloClient(object):
 
 
 class ApolloListener(ApolloClient):
-    Config_Path = "config_apollo.json"
+    Config_Path = os.path.join(os.path.dirname(__file__), "config_apollo.json")
 
     def __init__(self, app_id, cluster='default', config_path=None, timeout=35, ip=None):
         """
@@ -201,7 +201,7 @@ class ApolloListener(ApolloClient):
         value = super(ApolloListener, self).get_value(key, default_val=None, namespace=namespace,
                                                       auto_fetch_on_cache_miss=auto_fetch_on_cache_miss)
 
-        if value is None:
+        if value is None and os.path.exists(self.Config_Path):
             with open(self.Config_Path, "r") as f:
                 config = json.loads(f.read())
 

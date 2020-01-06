@@ -7,7 +7,7 @@ pyapollo 常用工具包
 from setuptools import setup, find_packages
 import pyapollo
 
-SHORT=u'apollo_config'
+SHORT = u'apollo_config'
 
 setup(
     name='apollo_config',
@@ -23,7 +23,7 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     include_package_data=True,
-    package_data={'': ['*.py','*.pyc']},
+    package_data={'': ['*.py', '*.pyc']},
     zip_safe=False,
     platforms='any',
     description=SHORT,

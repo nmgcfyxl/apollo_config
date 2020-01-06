@@ -3,8 +3,7 @@ PyApollo - Python Client for Ctrip's Apollo
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-方便Python接入配置中心框架 [Apollo](https://github.com/ctripcorp/apollo) 所开发的Python版本客户端。
-Tested with python 2.7 & 3.6
+优化PyApollo框架
 
 Installation
 ------------
@@ -26,8 +25,11 @@ python setup.py install
 - 启动客户端长连接监听
 
 ``` python
-client = ApolloClient(app_id=<appId>, cluster=<clusterName>, config_server_url=<configServerUrl>)
-client.start()
+    client = ApolloListener(app_id="midwork.test",
+                            cluster="dev",
+                            config_path="./config.json",
+                            timeout=60)
+    client.start()
 ```
 
 - 获取Apollo的配置

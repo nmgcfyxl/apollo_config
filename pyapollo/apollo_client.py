@@ -159,19 +159,20 @@ class ApolloClient(object):
 class ApolloListener(ApolloClient):
     Config_Path = os.path.join(os.path.dirname(__file__), "config_apollo.json")
 
-    def __init__(self, app_id, cluster='default', config_path=None, timeout=35, ip=None):
+    def __init__(self, app_id, cluster='default', config_path=None, timeout=60, env=None, ip=None):
         """
         初始化Apollo
         :param app_id: 应用名
         :param cluster: 集群名
         :param config_path: 文件路径或者字典，不同环境对应的配置中心地址
                             eg: {"DEV": "http://192.168.170.141:8080", "FAT": "http://192.168.170.142:8080"}
-        :param timeout:
-        :param ip:
+        :param timeout: 请求超时时间
+        :param env: 需要连接的系统环境的apollo，通常是从环境变量中获取，预留出来以便特殊使用
+        :param ip: 访问者ip
         """
         app_id = app_id if app_id else os.environ.get('APP_ID')
         cluster = cluster if cluster else os.environ.get('CLUSTER')
-        env = os.environ.get('ENV', 'dev')
+        env = env or os.environ.get('ENV', 'dev')
 
         if config_path is None:
             raise ValueError("config_path must be specified, content must be json string")
@@ -215,6 +216,7 @@ if __name__ == "__main__":
     client = ApolloListener(app_id="midwork.test",
                             cluster="dev",
                             config_path="./config.json",
+                            env="dev",
                             timeout=60)
     client.start()
     print(client.get_value("test"))

@@ -1,23 +1,23 @@
 # encoding: utf-8
 """
-pyapollo 常用工具包
+apollo 连接工具包
 
 
 """
 from setuptools import setup, find_packages
-import pyapollo
+import apollo_config
 
 SHORT = u'apollo_config'
 
 setup(
     name='apollo_config',
-    version=pyapollo.__version__,
+    version=apollo_config.__version__,
     packages=find_packages(),
     install_requires=[
         'requests'
     ],
-    author=pyapollo.__author__,
-    author_email=pyapollo.__email__,
+    author=apollo_config.__author__,
+    author_email=apollo_config.__email__,
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
